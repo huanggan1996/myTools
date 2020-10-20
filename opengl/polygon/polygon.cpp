@@ -8,7 +8,7 @@ void myDisplay(void)
 
 	glMatrixMode(GL_PROJECTION);//矩阵为投影变换模式
 	glLoadIdentity();//获得单位矩阵
-	gluPerspective(60, 1, 1, 4000);//透视变换角度75度，长宽比1：1，最近可视距离1，最远4000
+	gluPerspective(60, 1, 1, 4000);//y的视场角，宽高比1：1，最近可视距离1，最远4000
 
 	glMatrixMode(GL_MODELVIEW);//矩阵为视图模式
 	glLoadIdentity();
@@ -30,10 +30,7 @@ void myDisplay(void)
 	glFlush();
 	glutSwapBuffers();
 }
-void myIdle()
-{
-	myDisplay();
-}
+
 int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
@@ -42,7 +39,6 @@ int main(int argc, char* argv[])
 	glutInitWindowSize(1920, 1080);
 	glutCreateWindow("正方形");
 	glutDisplayFunc(&myDisplay);
-	glutIdleFunc(&myIdle);
 	glutMainLoop();
 	return 0;
 }
